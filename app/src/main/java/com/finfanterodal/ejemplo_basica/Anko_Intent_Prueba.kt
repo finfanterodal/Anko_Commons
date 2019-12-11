@@ -18,7 +18,7 @@ class Anko_Intent_Prueba : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_anko__intent__prueba)
 
-        //Recogemos un valor del MainActivity y coloreamos un textview cambiando el texto
+        //Recogemos un valor del MainActivity y coloreamos un textview cambiando el texto según el dato recibido.
         var value = intent.getStringExtra("color")
         when (value) {
             "amarillo" -> {

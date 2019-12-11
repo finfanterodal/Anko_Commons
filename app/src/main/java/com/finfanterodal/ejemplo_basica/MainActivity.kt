@@ -33,14 +33,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        //Intents
+        // Anko SnackBar
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
         }
 
 
         //Botones con diferentes funcionalidades para probar Anko
-        botonFecha.setOnClickListener{
+        botonFecha.setOnClickListener {
             val formato = SimpleDateFormat("HH:mm:ss")
             val fechaAtual = Calendar.getInstance().getTime()
             val s = formato.format(fechaAtual)
@@ -51,20 +52,22 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-        bRojo.setOnClickListener{
+        // Botón que envia un String a otro Activity.
+        bRojo.setOnClickListener {
             startActivity(intentFor<Anko_Intent_Prueba>("color" to "rojo"))
         }
 
-        bAmarillo.setOnClickListener{
+        // Botón que envia un String a otro Activity.
+        bAmarillo.setOnClickListener {
             startActivity(intentFor<Anko_Intent_Prueba>("color" to "amarillo"))
         }
 
+        // Botón que abre el navegador.
         bBrowser.setOnClickListener {
             browse("https://www.20minutos.es/")
         }
 
-        //Botón para utilizar el ForResulta y hacer una suma
+        //Botón para utilizar el ForResulta que envía datos a otro Activity y recibe un resultado.
         bSuma.setOnClickListener {
             var num1 = num1Text.text
             var num2 = num2Text.text
@@ -86,14 +89,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //COMROBACION SI TENEMOS PERMISO DE LLAMADA
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
-            != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
-        }
-
-
-
     }
 
 
@@ -113,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Método que se llama al cerrar la otra Activity que nos devuelve el valor de la suma, recoge el resultado del ForResult
+    //Método que se llama al cerrar la otra Activity que nos devuelve el valor de la suma, recoge el resultado del ForResult.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == SUMA_REQUEST) {
